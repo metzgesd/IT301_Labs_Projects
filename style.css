@@ -1,16 +1,37 @@
 body {
-    background-color: hsl(109, 83%, 14%);
-    font-family: "Baloo-Bhaina 2", sans-serif;
+    background-color: #0D4207;
+    font-family: "Baloo Bhaina 2", sans-serif;
     font-optical-sizing: auto;
-    font-weight: 600;
+    font-weight: 800;
     font-style: normal;
-    color: #94c8da;
+    font-size: 1.25em;
+    color: #9BD1E4;
 }
 
-header {
-    background-color: #94c8da;
+header, h2 {
+    background-color: #9BD1E4;
     color: #000000;
     border-radius: 10px;
     border: 5px solid #000000;
     box-shadow: 0px 4px 8px #94c8da;
+}
+
+section h3 {
+    border-bottom-style: solid;
+    border-bottom-color: #7c3f16;
+}
+
+a {
+    color: #819EFB;
+}
+
+aside {
+    padding: .25em;
+    border-radius: .8em;
+    background-color: #afa78b;
+    color:#6e3006
+}
+
+footer {
+    font-size: .75em;
 }
