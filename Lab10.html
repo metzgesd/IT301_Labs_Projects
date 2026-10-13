@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 10</title>
+    <style>
+    </style>
+</head>
+<body>
+    <script>
+        let bill = Number(prompt("What is the bill amount?"));
+
+do{
+    if(bill === 0){
+        bill = Number(prompt("Please enter a valid bill amount that is greater than zero."));
+    }
+
+    if(bill < 0){
+        bill = Number(prompt("Negative amounts are not allowed. Please enter a valid bill amount."));
+    }
+
+    if (isNaN(bill)){
+        bill = Number(prompt("Invalid input. Please enter a numeric bill amount."));
+    }
+} while((bill <= 0) || (isNaN(bill)));
+
+let tip = (bill * 0.1);
+
+console.log(`The bill amount is: $${bill.toFixed(2)} and the tip amount is: $${tip.toFixed(2)}.`);
+
+document.write(`The bill amount is: $${bill.toFixed(2)} and the tip amount is: $${tip.toFixed(2)}.`);
+    </script>
+</body>
+</html>
