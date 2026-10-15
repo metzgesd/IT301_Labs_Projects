@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOC and Events</title>
+    <style>
+        #box{
+            background-color: blue;
+            font-size:1.2em;
+            width: 200px;
+            padding: 3px;
+            text-align: center;
+        }
+        #box.hover{
+            cursor: pointer;
+        }
+        #divider{
+            height: 75vh;
+
+        }
+    </style>
+</head>
+<body>
+    <div id ="box">Click Me! 😊</div>
+    <div id = "divider"></div>
+<script>
+    const box = document.getElementById('box');
+    const divider = document.getElementById('divider');
+    function clicked(event){
+        box.style.backgroundColor = 'red';
+        box.textContent = 'Ouch!🤕';
+    };
+    function doubleClick(event){
+        box.style.background = 'pink';
+        box.textContent = 'Double trouble!🤩';
+    }
+    function mouseOver(event){
+        box.style.backgroundColor = 'yellow';
+        box.textContent = 'Do not click!😠'
+    };
+    function mouseLeave(event){
+        box.style.backgroundColor = 'lightgreen';
+        box.textContent = 'Phew!😌'
+    };
+    function mouseMove(event){
+        box.style.backgroundColor = 'lightblue';
+        box.textContent = 'I see you!👀'
+    };
+    box.addEventListener('click', clicked);
+    box.addEventListener('dblclick', doubleClick);
+    box.addEventListener('mousemove', mouseOver);
+    box.addEventListener('mouseout', mouseLeave);
+    divider.addEventListener('mouseover', mouseMove);
+</script>
+</body>
+</html>
