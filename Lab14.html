@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 14</title>
+    <style>
+        article{
+            background-color: lightgreen;
+            border: 2px solid black;
+            border-radius: 5px;
+            width: 300px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        article ul{
+            text-align:left;
+        }
+    </style>
+</head>
+<body>
+    <h1>Random User Generator</h1>
+    <p>Hit the button below to generate a random user!</h2>
+    <script>
+        let article = document.createElement('article')
+        let name = document.createElement('h2');
+        let list = document.createElement('ul')
+        let email = document.createElement('li')
+        let phone = document.createElement('li')
+        let picture = document.createElement('img')
+
+        let bttn = document.createElement('button');
+        bttn.type = 'button';
+        bttn.textContent = 'New User';
+
+        let form = document.createElement('form');
+        form.action = '#';
+
+        form.appendChild(bttn);
+        document.body.appendChild(form);
+
+        const getUser = async()=>{
+            try{
+            let result = await fetch('https://randomuser.me/api/');
+            result = await result.json();
+            console.log(result.results[0].name);
+            document.body.appendChild(article)
+            name.textContent = 'User: ' + result.results[0].name.first + ' ' + result.results[0].name.last;
+            article.appendChild(name);
+            
+            picture.src = result.results[0].picture.large;
+            picture.alt = 'User picture';
+            article.appendChild(picture);
+
+            article.appendChild(list);
+           
+            email.textContent = 'Email: ' + result.results[0].email;
+            list.appendChild(email);
+            
+            phone.textContent = 'Phone #: ' + result.results[0].phone;
+            list.appendChild(phone);
+
+        }catch{
+                (reason)=>console.log(reason);
+            };
+
+        }
+
+        bttn.addEventListener('click', getUser)
+    </script>
+</body>
+</html>
