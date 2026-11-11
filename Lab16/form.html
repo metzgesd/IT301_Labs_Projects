@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 16 Form</title>
+    <style>
+        .valid{
+            color:green;
+        }
+        .invalid{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <form id="form">
+        <label for="name">Name: </label>
+        <input id="name" type ="text" required="yes" placeholder="Enter your name"><br>
+        <label for="email">Email: </label>
+        <input id="email" type="email" required="yes" placeholder="Enter your email"><br>
+        <label for="password">Password: </label>
+        <input id="password" type="password" required="yes" placeholder="Enter your password"><br>
+        <p hidden  id="length">Your password must contain at least 6 characters</p>
+        <p hidden  id="special">Your password must contain a special character.</p>
+        <p hidden  id="uppercase">Your password must contain an uppercase letter</p>
+        <button type="submit" id="enter">Submit</button>
+    </form>
+    <script>
+        const lengthCount = document.getElementById('length');
+        const special = document.getElementById('special');
+        const uppercase = document.getElementById('uppercase');
+        const password = document.getElementById('password');
+
+        const form = document.getElementById('form').addEventListener('submit', (event)=>{
+            event.preventDefault();
+            window.location.href = "success.html";
+        });
+
+        password.addEventListener('input', ()=>{
+            const isLong = (password.value).length >=6;
+            const isSpecial = /[!@#$%^&*(),.?":{}|<>]/.test(password.value);
+            const isUppercase = /[A-Z]/.test(password.value);
+
+            lengthCount.removeAttribute('hidden');
+            special.removeAttribute('hidden');
+            uppercase.removeAttribute('hidden');
+
+            lengthCount.classList.toggle("valid", isLong);
+            lengthCount.classList.toggle("invalid", !isLong);
+
+            special.classList.toggle("valid", isSpecial);
+            special.classList.toggle("invalid", !isSpecial);
+
+            uppercase.classList.toggle("valid", isUppercase);
+            uppercase.classList.toggle("invalid", !isUppercase);
+
+        })
+    </script>
+</body>
+</html>
